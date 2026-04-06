@@ -27,8 +27,8 @@ const authenticateUser = async (req, res, next) => {
       [decoded.userId]
     );
 
-    if (!user || !user.is_active) {
-      return response.unauthorized(res, 'User not found or inactive');
+    if (!user) {
+      return response.unauthorized(res, 'User not found');
     }
 
     req.user = user;
@@ -63,8 +63,8 @@ const authenticateAdvertiser = async (req, res, next) => {
       [decoded.advertiserId]
     );
 
-    if (!advertiser || !advertiser.is_active) {
-      return response.unauthorized(res, 'Advertiser not found or inactive');
+    if (!advertiser) {
+      return response.unauthorized(res, 'Advertiser not found');
     }
 
     req.advertiser = advertiser;
@@ -99,8 +99,8 @@ const authenticateAdmin = async (req, res, next) => {
       [decoded.adminId]
     );
 
-    if (!admin || !admin.is_active) {
-      return response.unauthorized(res, 'Admin not found or inactive');
+    if (!admin) {
+      return response.unauthorized(res, 'Admin not found');
     }
 
     req.admin = admin;

@@ -1,2 +1,6 @@
-[build] 
-builder = "NIXPACKS" 
+[build]
+builder = "RAILPACK"
+rootDirectory = "smart-ad-plus"
+
+[deploy]
+startCommand = "node src/server.js"

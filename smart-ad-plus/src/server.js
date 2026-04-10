@@ -51,6 +51,19 @@ const start = async () => {
       logger.warn('⚠️  Redis unavailable — rate limiting will use memory store', { error: err.message });
     }
 
+    // Log registered routes
+    logger.info('📋 Registered API routes', {
+      routes: [
+        'POST /auth/send-otp',
+        'POST /auth/verify-otp',
+        'GET  /ads',
+        'GET  /users/me',
+        'GET  /advertiser',
+        'GET  /admin',
+        'GET  /health',
+      ],
+    });
+
     server.listen(PORT, '0.0.0.0', () => {
       logger.info(`🚀 Smart Ad+ backend running`, {
         port: PORT,

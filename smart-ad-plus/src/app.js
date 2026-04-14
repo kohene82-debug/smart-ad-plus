@@ -17,6 +17,7 @@ const advertiserRoutes = require('./routes/advertiser');
 const adminRoutes      = require('./routes/admin');
 
 const app = express();
+app.set('trust proxy', 1);
 
 // ─── SECURITY ─────────────────────────────────────────────────────────────────
 app.use(helmet({
@@ -68,11 +69,11 @@ app.get('/health', async (req, res) => {
 });
 
 // ─── ROUTES ───────────────────────────────────────────────────────────────────
-app.use('/auth',       authRoutes);
-app.use('/ads',        adsRoutes);
-app.use('/users',      userRoutes);
-app.use('/advertiser', advertiserRoutes);
-app.use('/admin',      adminRoutes);
+app.use('/api/auth',       authRoutes);
+app.use('/api/ads',        adsRoutes);
+app.use('/api/users',      userRoutes);
+app.use('/api/advertiser', advertiserRoutes);
+app.use('/api/admin',      adminRoutes);
 
 // ─── 404 ──────────────────────────────────────────────────────────────────────
 app.use((req, res) => {
